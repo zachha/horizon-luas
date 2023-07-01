@@ -193,3 +193,74 @@ profile.Sets = {
         Feet = 'Warlock\'s Boots',
     }
 };
+
+profile.Spells = {
+    Healing = T{"Cure", "Cure II", "Cure III", "Cure IV", "Curaga", "Curaga II", "Erase"},
+
+    MndEnfeebling = {"Slow", "Slow II", "Paralyze", "Paralyze II", "Poison", "Poison II", "Banish", "Banish II"},
+
+    IntEnfeebling = {"Sleep", "Sleep II", "Bind", "Gravity", "Blind", "Blaze Spikes", "Ice Spikes",
+        "Shock Spikes"},
+
+    EleDebuffs = {"Rasp", "Drown", "Frost", "Burn", "Choke", "Shock"},
+
+    Enhancing = {"Phalanx", "Stoneskin", "Enaero", "Enaero II", "Enfire", "Enfire II",
+        "Enstone", "Enstone II", "Enthunder", "Enthunder II", "Enwater", "Enwater II",
+        "Enblizzard", "Enblizzard II"},
+    
+    Buffs = {"Protect", "Protect II", "Protect III", "Protect IV", "Protectra", "Protectra II", "Protectra III",
+     "Protectra IV", "Protectra V", "Shell", "Shell II", "Shell III", "Shell IV", "Shellra", "Shellra II",
+     "Shellra III", "Shellra IV", "Shellra V", "Haste", "Refresh", "Aquaveil", "Blink"},
+
+    Sneaking = {"Sneak", "Invisible"}
+}
+
+profile.Packer = {
+};
+
+
+profile.OnLoad = function()
+end
+
+profile.OnUnload = function()
+end
+
+
+profile.HandleDefault = function()
+    local player = gData.GetPlayer();
+    if (player.Status ==  'Engaged') then
+        gFunc.EquipSet(profile.Sets.Idle); 
+    elseif (player.Status == 'Resting') then
+        gFunc.EquipSet(profile.Sets.Resting);
+        if (player.SubJob == 'BLM') then
+            gFunc.Equip('Back', 'Wizard\'s mantle');
+        end
+    else
+        gFunc.EquipSet(profile.Sets.Idle); 
+    end
+    profile.CheckSixtySync(player.MainJobSync);
+    profile.EquipSprint(); 
+end
+
+profile.HandleAbility = function()
+end
+
+profile.HandleItem = function()
+end
+
+profile.HandlePrecast = function()
+end
+
+profile.HandleMidcast = function()
+end
+
+profile.HandlePreshot = function()
+end
+
+profile.HandleMidshot = function()
+end
+
+profile.HandleWeaponskill = function()
+end
+
+return profile;
