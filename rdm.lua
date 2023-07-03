@@ -218,11 +218,68 @@ profile.Spells = {
 profile.Packer = {
 };
 
+local Settings = {
+    isFast = false,
+    isWarp = false,
+    isMDT = false,
+    isPDT = false,
+    Subslot = 'Default',
+}
+
 
 profile.OnLoad = function()
+    gSettings.AllowAddSet = true;
+    AshitaCore:GetChatManager():QueueCommand(-1, '/alias /rdm /lac fwd');
+    AshitaCore:GetChatManager():QueueCommand(-1, '/bind F9 /lac fwd fast');
+    AshitaCore:GetChatManager():QueueCommand(-1, '/bind F10 /lac fwd warp');
+    AshitaCore:GetChatManager():QueueCommand(-1, '/bind M /map');
 end
 
 profile.OnUnload = function()
+    AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /rdm');
+    AshitaCore:GetChatManager():QueueCommand(-1, '/unbind F9');
+    AshitaCore:GetChatManager():QueueCommand(-1, '/unbind F10');
+    AshitaCore:GetChatManager():QueueCommand(-1, '/unbind M /map');
+end
+
+profile.HandleCommand = function(args)
+    profile.WarpCudgel(args);
+    if (args[1] == 'fast') then
+        if (Settings.isFast == true) then
+            Settings.isFast = false;
+            gFunc.Enable('Feet');
+            gFunc.Echo(135, 'Powder Boots off');
+        else
+            Settings.isFast = true;
+            gFunc.Echo(135, "Powder Boots On");
+        end
+    end
+    if (args[1] == 'mdt') then
+        if (Settings.isMDT == true) then
+            Settings.isMDT = false;
+        else
+            Settings.isMDT = true;
+        end
+    end
+    if (args[1] == 'pdt') then
+        if (Settings.isPDT == true) then
+            Settings.isPDT = false;
+        else
+            Settings.isPDT = true;
+        end
+    end
+end
+
+profile.EquipSprint = function()
+    if (Settings.isFast) then
+        gFunc.EquipSet(profile.Sets.Sprint);
+    end
+end
+
+profile.CheckSixtySync = function(synclvl)
+    if (synclvl == 60) then
+        gFunc.EquipSet(profile.Sets.Sixtycap);
+    end
 end
 
 
