@@ -1,4 +1,5 @@
 local profile = {};
+
 profile.Sets = {
     Idle = {
         Main = 'Earth Staff',
@@ -64,9 +65,9 @@ profile.Sets = {
     IntEnfeebling = {
         Main = 'Ebony Wand +1',
         Sub = 'Numinous Shield',
-        Ammo = 'Morion Tathlum',
+        Ammo = 'Phtm. Tathlum',
         Head = 'Warlock\'s Chapeau',
-        Neck = 'Enfeebling Torque',
+        Neck = 'Enfeebling Torque', -- Philomath Stole has 3 int vs 7 enf skill 
         Body = 'Warlock\'s Tabard',
         Hands = 'Errant Cuffs',
         Ring1 = 'Tamas Ring',
@@ -79,7 +80,7 @@ profile.Sets = {
 
     Nuking = {
         Main = 'Ebony Wand +1',
-        Ammo = 'Morion Tathlum',
+        Ammo = 'Phtm. Tathlum',
         Head = 'Warlock\'s Chapeau',
         Neck = 'Elemental Torque',
         Ear1 = 'Moldavite Earring',
