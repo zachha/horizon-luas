@@ -307,6 +307,16 @@ profile.HandleItem = function()
 end
 
 profile.HandlePrecast = function()
+    local action = gData.GetAction();
+    local distance = tonumber(('%.1f'):fmt(math.sqrt(gData.GetActionTarget().Distance)));
+    local spellCooldown = AshitaCore:GetMemoryManager():GetRecast():GetSpellTimer(action.Id)/60;
+
+    -- TODO gate for mp amount before equipping fast cast set so plusMP set can maintain extra mp after convert
+
+    if((spellCooldown < 0.6) and (distance <= 20.4)) then
+        -- Precast equips FastCast set and switches into appropriate set during HandleMidcast method
+        gFunc.EquipSet(profile.Sets.FastCast);
+    end
 end
 
 profile.HandleMidcast = function()
