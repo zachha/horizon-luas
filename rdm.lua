@@ -243,6 +243,23 @@ profile.OnUnload = function()
     AshitaCore:GetChatManager():QueueCommand(-1, '/unbind M /map');
 end
 
+-- Method that checks passed element string and equips appropriate elemental staff
+profile.EquipEleStaff = function(element, spellName)
+    local eleStaff = element .. " Staff";
+    if (profile.CheckForSpell(profile.Spells.Buffs, spellName)) then
+        gFunc.Equip('Main', 'Earth Staff');
+        gFunc.Equip('Sub', '');
+    elseif (not profile.CheckForSpell(profile.Spells.EleDebuffs, spellName)) then
+        if (element == 'Dark') then
+            gFunc.Equip('Main', 'Pluto\'s Staff');
+            gFunc.Equip('Sub', '');
+        else
+            gFunc.Equip('Main', eleStaff);
+            gFunc.Equip('Sub', '');
+        end
+    end
+end
+
 profile.HandleCommand = function(args)
     profile.WarpCudgel(args);
     if (args[1] == 'fast') then
@@ -320,6 +337,51 @@ profile.HandlePrecast = function()
 end
 
 profile.HandleMidcast = function()
+    local action = gData.GetAction();
+    local distance = tonumber(('%.1f'):fmt(math.sqrt(gData.GetActionTarget().Distance)));
+    local spell = AshitaCore:GetResourceManager():GetSpellById(action.Id);
+    local spellRange = spell.Range;
+    local spellCastTime = spell.CastTime;
+    local spellRange2 = AshitaCore:GetResourceManager():GetSpellRange(action.Id, false);
+    local spellCooldown = AshitaCore:GetMemoryManager():GetRecast():GetSpellTimer(action.Id)/60;
+
+    if ((spellCooldown < 0.6) and (distance <= 20.4)) then
+         -- TODO same mp gate function as in HandlePrecast method before moving on
+
+        -- Mind Enfeebling
+        if (profile.CheckForSpell(profile.Spells.MndEnfeebling, action.Name)) then
+            gFunc.EquipSet(profile.Sets.MndEnfeebling);
+
+        -- Int Enfeebling
+        elseif ((profile.CheckForSpell(profile.Spells.IntEnfeebling, action.Name)) or (profile.CheckForSpell(profile.Spells.EleDebuffs, action.Name))) then
+            gFunc.EquipSet(profile.Sets.IntEnfeebling);
+
+        -- Sneak/Invis
+        elseif (profile.CheckForSpell(profile.Spells.Sneaking, action.Name)) then
+            gFunc.EquipSet(profile.Sets.Sneaking);
+
+        -- Enmity-
+        --elseif (profile.CheckForSpell(profile.Spells.Healing, action.Name)) then
+        elseif profile.Spells.Healing:contains(action.Name) then
+            gFunc.EquipSet(profile.Sets.Enmity);
+
+        -- Nuking
+        elseif ((action.Skill == 'Elemental Magic') ~= (profile.CheckForSpell(profile.Spells.EleDebuffs, action.Name))) then
+            gFunc.EquipSet(profile.Sets.Nuking);
+
+        -- Enhancing
+        elseif ((string.match(action.Name, "Bar")) or profile.CheckForSpell(profile.Spells.Enhancing, action.Name)) then
+            gFunc.EquipSet(profile.Sets.MndEnfeebling);
+            gFunc.EquipSet(profile.Sets.Enhancing);
+    
+        -- Defaults to idle set if the check falls through somehow
+        else 
+            gFunc.EquipSet(profile.Sets.Idle);
+        end
+
+        -- Equips appropriate Elemental Staff
+        profile.EquipEleStaff(action.Element, action.Name);
+    end
 end
 
 profile.HandlePreshot = function()
