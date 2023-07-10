@@ -243,6 +243,15 @@ profile.OnUnload = function()
     AshitaCore:GetChatManager():QueueCommand(-1, '/unbind M /map');
 end
 
+-- Method that checks a list for a specific spell string, returns true if found
+profile.CheckForSpell = function(spellList, castSpell)
+    for _, spell in pairs(spellList) do
+        if spell == castSpell then
+            return true 
+        end
+    end
+end
+
 -- Method that checks passed element string and equips appropriate elemental staff
 profile.EquipEleStaff = function(element, spellName)
     local eleStaff = element .. " Staff";
