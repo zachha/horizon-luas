@@ -252,6 +252,18 @@ profile.CheckForSpell = function(spellList, castSpell)
     end
 end
 
+profile.WarpCudgel = function(args)
+    if (args[1] == 'warp') then
+		gFunc.Echo(135, "Equipping Warp Cudgel and Warping in 30s");
+        local warpInfo = AshitaCore:GetResourceManager():GetItemByName('Warp Cudgel', 2);
+        local warpCount = profile.GetItemCount(warpInfo.Id);
+        gFunc.Echo(135, "Warp Cudgel ID: " .. warpInfo.Id);
+        gFunc.Echo(135, "# of Warp Cudgels: " .. warpCount);
+        -- warp cudgel ID: 17040
+    end
+end
+
+
 -- Method that checks passed element string and equips appropriate elemental staff
 profile.EquipEleStaff = function(element, spellName)
     local eleStaff = element .. " Staff";
