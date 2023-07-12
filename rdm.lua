@@ -339,6 +339,14 @@ profile.HandleDefault = function()
 end
 
 profile.HandleAbility = function()
+    local action = gData.GetAction();
+    local distance = tonumber(('%.1f'):fmt(math.sqrt(gData.GetActionTarget().Distance)));
+    local ability = AshitaCore:GetResourceManager():GetAbilityByName(action.Name, 2);
+    local abilityCooldown = profile.GetRecastTimer(ability.RecastTimerId)/60;
+    
+    if((abilityCooldown < 0.6) and (distance <= ability.Range)) then
+        --gFunc.Echo(135, "Check Successful");
+    end
 end
 
 profile.HandleItem = function()
