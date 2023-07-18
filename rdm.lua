@@ -321,21 +321,41 @@ profile.CheckSixtySync = function(synclvl)
     end
 end
 
+profile.CheckCity = function(loc)
+    if (string.match(loc, "Bastok")) or (string.match(loc, "Metalworks")) then
+        gFunc.Equip('Body', "Republic Aketon");
+    elseif (string.match(loc, "Windurst")) or (string.match(loc, "Heavens Tower")) then
+        --gFunc.Equip('Body', '')
+    elseif (string.match(loc, "San d\'Oria")) or (string.match(loc, "d\'Oraguille")) then
+        --gFunc.Equip('Body', '')
+    end
+end
+
 
 profile.HandleDefault = function()
     local player = gData.GetPlayer();
+    local loc = gData.GetEnvironment().Area;
     if (player.Status ==  'Engaged') then
         gFunc.EquipSet(profile.Sets.Idle); 
+        Settings.RestTimer = 0;
     elseif (player.Status == 'Resting') then
-        gFunc.EquipSet(profile.Sets.Resting);
-        if (player.SubJob == 'BLM') then
-            gFunc.Equip('Back', 'Wizard\'s mantle');
+        if Settings.RestTimer == 0 then
+            Settings.RestTimer = os.clock() + 18;
+        end
+
+        if (os.clock() > Settings.RestTimer) then
+            gFunc.EquipSet(profile.Sets.Resting);
+            if (player.SubJob == 'BLM') then
+                gFunc.Equip('Back', 'Wizard\'s mantle');
+            end
         end
     else
         gFunc.EquipSet(profile.Sets.Idle); 
+        Settings.RestTimer = 0;
     end
     profile.CheckSixtySync(player.MainJobSync);
     profile.EquipSprint(); 
+    profile.CheckCity(loc);
 end
 
 profile.HandleAbility = function()
