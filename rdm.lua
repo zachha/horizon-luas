@@ -227,7 +227,6 @@ local Settings = {
     Subslot = 'Default',
 }
 
-
 profile.OnLoad = function()
     gSettings.AllowAddSet = true;
     AshitaCore:GetChatManager():QueueCommand(-1, '/alias /rdm /lac fwd');
@@ -242,6 +241,15 @@ profile.OnUnload = function()
     AshitaCore:GetChatManager():QueueCommand(-1, '/unbind F10');
     AshitaCore:GetChatManager():QueueCommand(-1, '/unbind M /map');
 end
+
+gRealTimePtr = ashita.memory.find('FFXiMain.dll', 0, '8B0D????????8B410C8B49108D04808D04808D04808D04C1C3', 2, 0);
+
+profile.GetTimeComparand = function()
+    local ptr = ashita.memory.read_uint32(gRealTimePtr);
+    ptr = ashita.memory.read_uint32(ptr);
+    return ashita.memory.read_uint32(ptr + 0x0C);
+end
+
 
 -- Method that checks a list for a specific spell string, returns true if found
 profile.CheckForSpell = function(spellList, castSpell)
