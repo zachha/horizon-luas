@@ -2,7 +2,7 @@ local profile = {};
 
 profile.Sets = {
     Idle = {
-        Main = 'Earth Staff',
+        Main = 'Terra\'s Staff',
         Sub = '',
         Ammo = 'Hedgehog Bomb',
         Head = '',
@@ -170,7 +170,7 @@ profile.Sets = {
     },
 
     PDT = {
-        Main = 'Earth Staff',
+        Main = 'Terra\'s Staff',
         Back = 'Cheviot Cape'
     },
 
@@ -179,7 +179,7 @@ profile.Sets = {
     },
 
     Sixtycap = {
-        Main = 'Earth Staff',
+        Main = 'Terra\'s Staff',
         Head = '',
         Neck = 'Justice Badge',
         Ear1 = 'Moldavite Earring',
@@ -226,6 +226,17 @@ local Settings = {
     isPDT = false,
     Subslot = 'Default',
 }
+
+local EleStaffTable = {
+    ['Fire'] = 'Ice Staff',
+    ['Earth'] = 'Terra\'s Staff',
+    ['Water'] = 'Ice Staff',
+    ['Wind'] = 'Wind Staff',
+    ['Ice'] = 'Ice Staff',
+    ['Thunder'] = 'Thunder Staff',
+    ['Light'] = 'Earth Staff',
+    ['Dark'] = 'Pluto\'s Staff'
+};
 
 profile.OnLoad = function()
     gSettings.AllowAddSet = true;
