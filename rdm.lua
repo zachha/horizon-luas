@@ -7,15 +7,15 @@ profile.Sets = {
         Ammo = 'Hedgehog Bomb',
         Head = '',
         Neck = 'Enfeebling Torque',
-        Ear1 = 'Moldavite Earring',
-        Ear2 = 'Cunning Earring',
+        Ear1 = 'Coral Earring',
+        Ear2 = 'Coral Earring',
         Body = 'Vermillion Cloak',
         Hands = 'Errant Cuffs',
         Ring1 = 'Tamas Ring',
-        Ring2 = 'Sapphire Ring',
+        Ring2 = 'Merman\'s Ring',
         Back = 'Cheviot Cape',
         Waist = 'Swift Belt',
-        Legs = 'Errant Slops',
+        Legs = 'Coral Cuisses +1',
         Feet = 'Errant Pigaches'
     },
 
@@ -24,7 +24,9 @@ profile.Sets = {
         Sub = 'Numinous Shield',
         Head = 'Warlock\'s Chapeau',
         Neck = 'Healing Torque',
-        Body = 'Errant Hpl.',
+        Ear1 = 'Cmn. Earring',
+        Ear2 = 'Coral Earring',
+        Body = 'Mahatma Hpl.',
         Hands = 'Warlock\'s Gloves',
         Ring1 = 'Tamas Ring',
         Ring2 = 'Sapphire Ring',
@@ -37,10 +39,10 @@ profile.Sets = {
         Main = 'Pluto\'s Staff',
         Head = 'Warlock\'s Chapeau',
         Neck = 'Enfeebling Torque',
-        Body = 'Errant Hpl.',
+        Body = 'Mahatma Hpl.',
         Hands = 'Warlock\'s Gloves',
         Ring1 = 'Tamas Ring',
-        Ring2 = 'Sapphire Ring',
+        Ring2 = 'Merman\'s Ring',
         Back = 'Red Cape +1',
         Waist = 'Hierarch Belt',
         Legs = 'Warlock\'s Tights',
@@ -48,10 +50,12 @@ profile.Sets = {
     },
 
     MndEnfeebling = {
-        Main = 'Ebony Wand +1',
+        Main = 'Mythic Wand +1',
         Sub = 'Numinous Shield',
         Head = 'Warlock\'s Chapeau',
         Neck = 'Enfeebling Torque',
+        Ear1 = 'Cmn. Earring',
+        Ear2 = 'Coral Earring',
         Body = 'Warlock\'s Tabard',
         Hands = 'Warlock\'s Gloves',
         Ring1 = 'Tamas Ring',
@@ -63,11 +67,13 @@ profile.Sets = {
     },
 
     IntEnfeebling = {
-        Main = 'Ebony Wand +1',
+        Main = 'Mythic Wand +1',
         Sub = 'Numinous Shield',
         Ammo = 'Phtm. Tathlum',
         Head = 'Warlock\'s Chapeau',
         Neck = 'Enfeebling Torque', -- Philomath Stole has 3 int vs 7 enf skill 
+        Ear1 = 'Cunning Earring',
+        Ear2 = 'Abyssal Earring',
         Body = 'Warlock\'s Tabard',
         Hands = 'Errant Cuffs',
         Ring1 = 'Tamas Ring',
@@ -79,13 +85,13 @@ profile.Sets = {
     },
 
     Nuking = {
-        Main = 'Ebony Wand +1',
+        Main = 'Mythic Wand +1',
         Ammo = 'Phtm. Tathlum',
         Head = 'Warlock\'s Chapeau',
         Neck = 'Elemental Torque',
         Ear1 = 'Moldavite Earring',
-        Ear2 = 'Cunning Earring',
-        Body = 'Errant Hpl.',
+        Ear2 = 'Abyssal Earring',
+        Body = 'Mahatma Hpl.',
         Hands = 'Warlock\'s Gloves',
         Ring1 = 'Tamas Ring',
         Ring2 = 'Diamond Ring',
@@ -97,9 +103,11 @@ profile.Sets = {
 
     FastCast = {
         Head = 'Warlock\'s Chapeau',
-        Body = 'Errant Hpl.',
+        Body = 'Mahatma Hpl.',
         Waist = 'Swift Belt'
     },
+
+    HasteCast = {},
 
     Sneaking = {
         Hands = 'Dream Mittens +1',
@@ -109,40 +117,27 @@ profile.Sets = {
 
     Enhancing = {
         Neck = 'Enhancing Torque',
-        Body = "Errant Hpl.",
+        Body = "Mahatma Hpl.",
         Hands = 'Duelist\'s Gloves',
         Legs = 'Warlock\'s Tights'
     },
 
-    FiftyCap = {
-        Main = 'Fencing Degen',
-        Sub = 'Maple Shield',
-        Ammo = 'Morion Tathlum',
-        Head = 'Warlock\'s Chapeau',
-        Neck = 'Justice Badge',
-        Body = 'Warlock\'s Tabard',
-        Hands = 'Warlock\'s Gloves',
-        Ring1 = 'Saintly Ring',
-        Ring2 = 'Saintly Ring',
-        Back = 'Red Cape +1',
-        Waist = 'Swift Belt',
-        Legs = 'Custom Slacks',
-        Feet = 'Custom M Boots'
-    },
-
     Enmity = {
-        Main = 'Ebony Wand +1',
+        Main = 'Mythic Wand +1',
         Sub = 'Numinous Shield',
-        Ammo = 'Hedgehog Bomb',
-        Head = 'Raven Beret',
+        Ammo = 'Hedgehog Bomb', -- -1 enmity
+        Head = 'Raven Beret', -- -8 enmity
         Neck = 'Justice Badge',
-        Body = 'Raven Jupon',
-        Hands = 'Crow Bracers',
-        Ring2 = 'Peace Ring',
-        Back = 'Red Cape +1',
-        Waist = 'Penitent\'s Rope',
-        Legs = 'Raven Hose',
-        Feet = 'Crow Gaiters'
+        Ear1 = 'Cmn. Earring',
+        Ear2 = 'Coral Earring', 
+        Body = 'Raven Jupon', -- -9 enmity vs -4 mahatma bod
+        Hands = 'Crow Bracers', -- -4 enmity vs -2 errant hands
+        Ring1 = 'Tamas Ring', -- -5 enmity
+        Ring2 = 'Peace Ring', -- -1 enmity
+        Back = 'Errant Cape', -- -5 enmity
+        Waist = 'Penitent\'s Rope', -- -3 enmity
+        Legs = 'Raven Hose', -- -6 enmity 
+        Feet = 'Crow Gaiters' -- -4 enmity vs -2 errant feet
     },
 
     PlusMP = {
@@ -166,7 +161,7 @@ profile.Sets = {
         Ear2 = 'Coral Earring',
         Back = 'Gramary Cape',
         Hands = 'Duelist\'s Gloves',
-        Legs = 'Coral Cuisses',
+        Legs = 'Coral Cuisses +1',
     },
 
     PDT = {
@@ -178,7 +173,7 @@ profile.Sets = {
         Feet = 'Powder Boots'
     },
 
-    Sixtycap = {
+    SixtyCap = {
         Main = 'Terra\'s Staff',
         Head = '',
         Neck = 'Justice Badge',
@@ -192,8 +187,25 @@ profile.Sets = {
         Waist = 'Swift Belt',
         Legs = 'Custom Slacks',
         Feet = 'Warlock\'s Boots',
-    }
-};
+    },
+
+    FiftyCap = {
+        Main = 'Fencing Degen',
+        Sub = 'Decurion\'s Shield',
+        Ammo = 'Morion Tathlum',
+        Head = 'Raven Beret',
+        Neck = 'Justice Badge',
+        Ear1 = 'Cunning Earring',
+        Ear2 = 'Moldavite Earring',
+        Body = 'Raven Jupon',
+        Hands = 'Crow Bracers',
+        Ring1 = 'Tamas Ring',
+        Ring2 = 'Saintly Ring',
+        Back = 'Red Cape +1',
+        Waist = 'Swift Belt',
+        Legs = 'Raven Hose',
+        Feet = 'Custom M Boots',
+    }};
 
 profile.Spells = {
     Healing = T{"Cure", "Cure II", "Cure III", "Cure IV", "Curaga", "Curaga II", "Erase"},
@@ -225,18 +237,20 @@ local Settings = {
     isMDT = false,
     isPDT = false,
     Subslot = 'Default',
+    RestTimer = 0
 }
 
 local EleStaffTable = {
-    ['Fire'] = 'Ice Staff',
+    ['Fire'] = 'Fire Staff',
     ['Earth'] = 'Terra\'s Staff',
-    ['Water'] = 'Ice Staff',
-    ['Wind'] = 'Wind Staff',
-    ['Ice'] = 'Ice Staff',
+    ['Water'] = 'Water Staff',
+    ['Wind'] = 'Auster\'s Staff',
+    ['Ice'] = 'Aquilo\'s Staff',
     ['Thunder'] = 'Thunder Staff',
-    ['Light'] = 'Earth Staff',
+    ['Light'] = 'Light Staff',
     ['Dark'] = 'Pluto\'s Staff'
 };
+
 
 profile.OnLoad = function()
     gSettings.AllowAddSet = true;
@@ -253,14 +267,6 @@ profile.OnUnload = function()
     AshitaCore:GetChatManager():QueueCommand(-1, '/unbind M /map');
 end
 
-gRealTimePtr = ashita.memory.find('FFXiMain.dll', 0, '8B0D????????8B410C8B49108D04808D04808D04808D04C1C3', 2, 0);
-
-profile.GetTimeComparand = function()
-    local ptr = ashita.memory.read_uint32(gRealTimePtr);
-    ptr = ashita.memory.read_uint32(ptr);
-    return ashita.memory.read_uint32(ptr + 0x0C);
-end
-
 
 -- Method that checks a list for a specific spell string, returns true if found
 profile.CheckForSpell = function(spellList, castSpell)
@@ -271,34 +277,40 @@ profile.CheckForSpell = function(spellList, castSpell)
     end
 end
 
-profile.WarpCudgel = function(args)
-    if (args[1] == 'warp') then
-		gFunc.Echo(135, "Equipping Warp Cudgel and Warping in 30s");
-        local warpInfo = AshitaCore:GetResourceManager():GetItemByName('Warp Cudgel', 2);
-        local warpCount = profile.GetItemCount(warpInfo.Id);
-        gFunc.Echo(135, "Warp Cudgel ID: " .. warpInfo.Id);
-        gFunc.Echo(135, "# of Warp Cudgels: " .. warpCount);
-        -- warp cudgel ID: 17040
-    end
-end
-
-
 -- Method that checks passed element string and equips appropriate elemental staff
 profile.EquipEleStaff = function(element, spellName)
-    local eleStaff = element .. " Staff";
     if (profile.CheckForSpell(profile.Spells.Buffs, spellName)) then
-        gFunc.Equip('Main', 'Earth Staff');
+        gFunc.Equip('Main', EleStaffTable["Earth"]);
         gFunc.Equip('Sub', '');
     elseif (not profile.CheckForSpell(profile.Spells.EleDebuffs, spellName)) then
-        if (element == 'Dark') then
-            gFunc.Equip('Main', 'Pluto\'s Staff');
-            gFunc.Equip('Sub', '');
-        else
-            gFunc.Equip('Main', eleStaff);
-            gFunc.Equip('Sub', '');
-        end
+        gFunc.Equip('main', EleStaffTable[element]);
+        gFunc.Equip('Sub', '');
     end
 end
+
+profile.EquipSprint = function()
+    if (Settings.isFast) then
+        gFunc.EquipSet(profile.Sets.Sprint);
+    end
+end
+
+profile.CheckSixtySync = function(synclvl)
+    if (synclvl == 60) then
+        gFunc.EquipSet(profile.Sets.Sixtycap);
+    end
+end
+
+profile.CheckCity = function(loc)
+    if (string.match(loc, "Bastok")) or (string.match(loc, "Metalworks")) then
+        gFunc.Equip('Body', "Republic Aketon");
+    elseif (string.match(loc, "Windurst")) or (string.match(loc, "Heavens Tower")) then
+        --gFunc.Equip('Body', '')
+    elseif (string.match(loc, "San d\'Oria")) or (string.match(loc, "d\'Oraguille")) then
+        --gFunc.Equip('Body', '')
+    end
+end
+
+
 
 profile.HandleCommand = function(args)
     profile.WarpCudgel(args);
@@ -328,29 +340,6 @@ profile.HandleCommand = function(args)
     end
 end
 
-profile.EquipSprint = function()
-    if (Settings.isFast) then
-        gFunc.EquipSet(profile.Sets.Sprint);
-    end
-end
-
-profile.CheckSixtySync = function(synclvl)
-    if (synclvl == 60) then
-        gFunc.EquipSet(profile.Sets.Sixtycap);
-    end
-end
-
-profile.CheckCity = function(loc)
-    if (string.match(loc, "Bastok")) or (string.match(loc, "Metalworks")) then
-        gFunc.Equip('Body', "Republic Aketon");
-    elseif (string.match(loc, "Windurst")) or (string.match(loc, "Heavens Tower")) then
-        --gFunc.Equip('Body', '')
-    elseif (string.match(loc, "San d\'Oria")) or (string.match(loc, "d\'Oraguille")) then
-        --gFunc.Equip('Body', '')
-    end
-end
-
-
 profile.HandleDefault = function()
     local player = gData.GetPlayer();
     local loc = gData.GetEnvironment().Area;
@@ -378,14 +367,6 @@ profile.HandleDefault = function()
 end
 
 profile.HandleAbility = function()
-    local action = gData.GetAction();
-    local distance = tonumber(('%.1f'):fmt(math.sqrt(gData.GetActionTarget().Distance)));
-    local ability = AshitaCore:GetResourceManager():GetAbilityByName(action.Name, 2);
-    local abilityCooldown = profile.GetRecastTimer(ability.RecastTimerId)/60;
-    
-    if((abilityCooldown < 0.6) and (distance <= ability.Range)) then
-        --gFunc.Echo(135, "Check Successful");
-    end
 end
 
 profile.HandleItem = function()
@@ -408,9 +389,6 @@ profile.HandleMidcast = function()
     local action = gData.GetAction();
     local distance = tonumber(('%.1f'):fmt(math.sqrt(gData.GetActionTarget().Distance)));
     local spell = AshitaCore:GetResourceManager():GetSpellById(action.Id);
-    local spellRange = spell.Range;
-    local spellCastTime = spell.CastTime;
-    local spellRange2 = AshitaCore:GetResourceManager():GetSpellRange(action.Id, false);
     local spellCooldown = AshitaCore:GetMemoryManager():GetRecast():GetSpellTimer(action.Id)/60;
 
     if ((spellCooldown < 0.6) and (distance <= 20.4)) then
@@ -429,7 +407,6 @@ profile.HandleMidcast = function()
             gFunc.EquipSet(profile.Sets.Sneaking);
 
         -- Enmity-
-        --elseif (profile.CheckForSpell(profile.Spells.Healing, action.Name)) then
         elseif profile.Spells.Healing:contains(action.Name) then
             gFunc.EquipSet(profile.Sets.Enmity);
 
@@ -450,6 +427,7 @@ profile.HandleMidcast = function()
         -- Equips appropriate Elemental Staff
         profile.EquipEleStaff(action.Element, action.Name);
     end
+
 end
 
 profile.HandlePreshot = function()
