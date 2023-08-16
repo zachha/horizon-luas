@@ -14,25 +14,9 @@ profile.Sets = {
         Ring1 = 'Tamas Ring',
         Ring2 = 'Merman\'s Ring',
         Back = 'Cheviot Cape',
-        Waist = 'Swift Belt',
+        Waist = 'Hierarch Belt',
         Legs = 'Coral Cuisses +1',
-        Feet = 'Errant Pigaches'
-    },
-
-    Healing = {
-        Main = 'Fencing Degen',
-        Sub = 'Numinous Shield',
-        Head = 'Warlock\'s Chapeau',
-        Neck = 'Healing Torque',
-        Ear1 = 'Cmn. Earring',
-        Ear2 = 'Coral Earring',
-        Body = 'Mahatma Hpl.',
-        Hands = 'Warlock\'s Gloves',
-        Ring1 = 'Tamas Ring',
-        Ring2 = 'Sapphire Ring',
-        Waist = 'Swift Belt',
-        Legs = 'Warlock\'s Tights',
-        Feet = 'Warlock\'s Boots'
+        Feet = 'Mahatma Pigaches'
     },
 
     Resting = {
@@ -43,8 +27,8 @@ profile.Sets = {
         Hands = 'Warlock\'s Gloves',
         Ring1 = 'Tamas Ring',
         Ring2 = 'Merman\'s Ring',
-        Back = 'Red Cape +1',
-        Waist = 'Hierarch Belt',
+        Back = 'Hexerei Cape',
+        Waist = 'Duelist\'s Belt',
         Legs = 'Warlock\'s Tights',
         Feet = 'Warlock\'s Boots'
     },
@@ -60,10 +44,10 @@ profile.Sets = {
         Hands = 'Warlock\'s Gloves',
         Ring1 = 'Tamas Ring',
         Ring2 = 'Sapphire Ring',
-        Back = 'Red Cape +1',
+        Back = 'Prism Cape',
         Waist = 'Penitent\'s Rope',
-        Legs = 'Errant Slops',
-        Feet = 'Duelist\'s Boots'
+        Legs = 'Mahatma Slops',
+        Feet = 'Mahatma Pigaches'
     },
 
     IntEnfeebling = {
@@ -78,9 +62,9 @@ profile.Sets = {
         Hands = 'Errant Cuffs',
         Ring1 = 'Tamas Ring',
         Ring2 = 'Diamond Ring',
-        Back = 'Red Cape +1',
+        Back = 'Prism Cape',
         Waist = 'Penitent\'s Rope',
-        Legs = 'Errant Slops',
+        Legs = 'Mahatma Slops',
         Feet = 'Warlock\'s Boots'
     },
 
@@ -95,19 +79,22 @@ profile.Sets = {
         Hands = 'Warlock\'s Gloves',
         Ring1 = 'Tamas Ring',
         Ring2 = 'Diamond Ring',
-        Back = 'Red Cape +1',
+        Back = 'Prism Cape',
         Waist = 'Swift Belt',
-        Legs = 'Errant Slops',
-        Feet = 'Duelist\'s Boots'
+        Legs = 'Mahatma Slops',
+        Feet = 'Dls. Boots +1'
     },
 
     FastCast = {
         Head = 'Warlock\'s Chapeau',
-        Body = 'Mahatma Hpl.',
+        Body = 'Duelist\'s Tabard',
         Waist = 'Swift Belt'
     },
 
-    HasteCast = {},
+    HasteCast = {
+        Hands = 'Dusk Gloves',
+        Feet = 'Dusk Ledelsens'
+    },
 
     Sneaking = {
         Hands = 'Dream Mittens +1',
@@ -117,7 +104,7 @@ profile.Sets = {
 
     Enhancing = {
         Neck = 'Enhancing Torque',
-        Body = "Mahatma Hpl.",
+        --Body = '',
         Hands = 'Duelist\'s Gloves',
         Legs = 'Warlock\'s Tights'
     },
@@ -150,17 +137,19 @@ profile.Sets = {
         Hands = 'Errant Cuffs', -- -20 hp +20 mp
         Ring1 = 'Tamas Ring', -- 30mp
         Ring2 = 'Peace Ring', -- 10 hp>mp
-        --Back = '',
+        Back = 'Errant Cape', -- 30mp
         Waist = 'Hierarch Belt', -- +48 mp
         Legs = 'Custom Slacks', -- +32 mp
-        Feet = 'Errant Pigaches' -- -20hp +20mp
+        Feet = 'Mahatma Pigaches' -- -25hp +25mp
     },
 
     MDT = {
         Ear1 = 'Coral Earring',
         Ear2 = 'Coral Earring',
-        Back = 'Gramary Cape',
+        Back = 'Hexerei Cape',
         Hands = 'Duelist\'s Gloves',
+        --Ring1 = '',
+        Ring2 = 'Merman\'s Ring',
         Legs = 'Coral Cuisses +1',
     },
 
@@ -251,6 +240,13 @@ local EleStaffTable = {
     ['Dark'] = 'Pluto\'s Staff'
 };
 
+gRealTimePtr = ashita.memory.find('FFXiMain.dll', 0, '8B0D????????8B410C8B49108D04808D04808D04808D04C1C3', 2, 0);
+
+profile.GetTimeComparand = function()
+    local ptr = ashita.memory.read_uint32(gRealTimePtr);
+    ptr = ashita.memory.read_uint32(ptr);
+    return ashita.memory.read_uint32(ptr + 0x0C);
+end
 
 profile.OnLoad = function()
     gSettings.AllowAddSet = true;
@@ -267,6 +263,25 @@ profile.OnUnload = function()
     AshitaCore:GetChatManager():QueueCommand(-1, '/unbind M /map');
 end
 
+-- Method that cycles through player abilities to match the correct ability for recast time
+profile.GetRecastTimer = function(abilityRecastId)
+    local memRecast  = AshitaCore:GetMemoryManager():GetRecast();
+    
+    if (abilityRecastId == 0) then
+        return memRecast:GetAbilityTimer(0);
+    end
+    
+    -- Searches player's recasts
+    for x = 0, 31 do
+        local id = memRecast:GetAbilityTimerId(x);
+        if (id == abilityRecastId) then
+            return memRecast:GetAbilityTimer(x);
+        end
+    end
+    
+    -- if ability wasn't found 
+    return -1;
+end
 
 -- Method that checks a list for a specific spell string, returns true if found
 profile.CheckForSpell = function(spellList, castSpell)
@@ -288,15 +303,56 @@ profile.EquipEleStaff = function(element, spellName)
     end
 end
 
+profile.GetItemCount = function(warpId)
+    local inv = AshitaCore:GetMemoryManager():GetInventory();
+    local ret = 0;
+    local containerNum = 0;
+    local containerIndex = 0;
+    local chosenWarp = nil;
+
+    -- x 0-12 loop can be cut down if indices of inv and wardrobe 1 + 2 allow 
+    for x = 0, 12 do
+        for y = 0, 81 do
+            local item = inv:GetContainerItem(x, y);
+            if (item ~= nil and item.Id == warpId and item.Id ~= 65535) then
+                local useTime = struct.unpack('L', item.Extra, 5); -- + 0x3C307D70;
+                local timeComp = profile.GetTimeComparand();
+                --gFunc.Echo(135, 'Warp Cudgel Charges: ' .. item.Type);
+                gFunc.Echo(135, 'Test: ' .. 0x3C307D70);
+                gFunc.Echo(135, 'Use time: ' .. useTime);
+                gFunc.Echo(135, 'Time Comperand: ' .. timeComp);
+                gFunc.Echo(135, 'Time until use: ' .. (timeComp - useTime));
+                --gFunc.Echo(135, 'Extra [1]: ' .. item.Extra[1]);
+                
+                ret = item.Count + ret;
+            end
+        end
+    end
+    return ret;
+end
+
+profile.WarpCudgel = function(args)
+    if (args[1] == 'warp') then
+		gFunc.Echo(135, "Equipping Warp Cudgel and Warping in 30s");
+        local warpInfo = AshitaCore:GetResourceManager():GetItemByName('Warp Cudgel', 2);
+        local warpCount = profile.GetItemCount(warpInfo.Id);
+        gFunc.Echo(135, "Warp Cudgel ID: " .. warpInfo.Id);
+        gFunc.Echo(135, "# of Warp Cudgels: " .. warpCount);
+        -- warp cudgel ID: 17040
+    end
+end
+
 profile.EquipSprint = function()
     if (Settings.isFast) then
         gFunc.EquipSet(profile.Sets.Sprint);
     end
 end
 
-profile.CheckSixtySync = function(synclvl)
-    if (synclvl == 60) then
-        gFunc.EquipSet(profile.Sets.Sixtycap);
+profile.CheckLevelSync = function(synclvl)
+    if (synclvl == 50) then
+        gFunc.EquipSet(profile.Sets.FiftyCap);
+    elseif (synclvl == 60) then
+        gFunc.EquipSet(profile.Sets.SixtyCap);
     end
 end
 
@@ -361,12 +417,31 @@ profile.HandleDefault = function()
         gFunc.EquipSet(profile.Sets.Idle); 
         Settings.RestTimer = 0;
     end
-    profile.CheckSixtySync(player.MainJobSync);
+    profile.CheckLevelSync(player.MainJobSync);
     profile.EquipSprint(); 
     profile.CheckCity(loc);
 end
 
 profile.HandleAbility = function()
+    local action = gData.GetAction();
+    local distance = tonumber(('%.1f'):fmt(math.sqrt(gData.GetActionTarget().Distance)));
+    --local ability = AshitaCore:GetResourceManager():GetAbilityById(action.Id);
+    local ability = AshitaCore:GetResourceManager():GetAbilityByName(action.Name, 2);
+    local abilityCooldown = profile.GetRecastTimer(ability.RecastTimerId)/60;
+    local abilityCooldown5 = AshitaCore:GetMemoryManager():GetRecast():GetAbilityTimer(action.Id);
+    local abilityCooldown2 = AshitaCore:GetMemoryManager():GetPlayer():GetAbilityRecast(ability.Id);
+    local abilityCooldown3 = AshitaCore:GetMemoryManager():GetRecast():GetAbilityTimer(ability.Id)/60;
+    local abilityCooldown4 = AshitaCore:GetMemoryManager():GetRecast():GetAbilityTimer(action.Resource.Id);
+    -- TEST CODE FOR CONQUEST ITEMS
+    local playerNation = AshitaCore:GetMemoryManager():GetPlayer():GetNation();
+    
+    gFunc.Echo(135, "Ability Cooldown Five: " .. abilityCooldown);
+    gFunc.Echo(135, "Ability Name: " .. ability.Name[3]);
+    gFunc.Echo(135, "Ability Range: " .. ability.Range);
+
+    if((abilityCooldown < 0.6) and (distance <= ability.Range)) then
+        gFunc.Echo(135, "Check Successful");
+    end
 end
 
 profile.HandleItem = function()
@@ -389,6 +464,9 @@ profile.HandleMidcast = function()
     local action = gData.GetAction();
     local distance = tonumber(('%.1f'):fmt(math.sqrt(gData.GetActionTarget().Distance)));
     local spell = AshitaCore:GetResourceManager():GetSpellById(action.Id);
+    local spellRange = spell.Range;
+    local spellCastTime = spell.CastTime;
+    local spellRange2 = AshitaCore:GetResourceManager():GetSpellRange(action.Id, false);
     local spellCooldown = AshitaCore:GetMemoryManager():GetRecast():GetSpellTimer(action.Id)/60;
 
     if ((spellCooldown < 0.6) and (distance <= 20.4)) then
@@ -407,6 +485,7 @@ profile.HandleMidcast = function()
             gFunc.EquipSet(profile.Sets.Sneaking);
 
         -- Enmity-
+        --elseif (profile.CheckForSpell(profile.Spells.Healing, action.Name)) then
         elseif profile.Spells.Healing:contains(action.Name) then
             gFunc.EquipSet(profile.Sets.Enmity);
 
@@ -437,6 +516,8 @@ profile.HandleMidshot = function()
 end
 
 profile.HandleWeaponskill = function()
+    local action = gData.GetAction();
+    local distance = tonumber(('%.1f'):fmt(math.sqrt(gData.GetActionTarget().Distance)));
 end
 
 return profile;
