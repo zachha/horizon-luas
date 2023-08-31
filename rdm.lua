@@ -6,42 +6,44 @@ profile.Sets = {
         Sub = '',
         Ammo = 'Hedgehog Bomb',
         Head = '',
-        Neck = 'Enfeebling Torque',
-        Ear1 = 'Coral Earring',
-        Ear2 = 'Coral Earring',
+        Neck = 'Uggalepih pendant',
+        Ear1 = 'Loquac. Earring',
+        Ear2 = 'Magnetic Earring',
         Body = 'Vermillion Cloak',
-        Hands = 'Errant Cuffs',
+        Hands = 'Dls. Gloves +1',
         Ring1 = 'Tamas Ring',
         Ring2 = 'Merman\'s Ring',
-        Back = 'Cheviot Cape',
+        Back = 'Hexerei Cape',
         Waist = 'Hierarch Belt',
-        Legs = 'Coral Cuisses +1',
+        Legs = 'Blood Cuisses',
         Feet = 'Mahatma Pigaches'
     },
 
     Resting = {
         Main = 'Pluto\'s Staff',
         Head = 'Warlock\'s Chapeau',
-        Neck = 'Enfeebling Torque',
+        Neck = 'Uggalepih Pendant',
+        Ear1 = 'Loquac. Earring',
+        Ear2 = 'Magnetic Earring',
         Body = 'Mahatma Hpl.',
         Hands = 'Warlock\'s Gloves',
         Ring1 = 'Tamas Ring',
         Ring2 = 'Merman\'s Ring',
         Back = 'Hexerei Cape',
         Waist = 'Duelist\'s Belt',
-        Legs = 'Warlock\'s Tights',
+        Legs = 'Baron\'s Slops',
         Feet = 'Warlock\'s Boots'
     },
 
     MndEnfeebling = {
         Main = 'Mythic Wand +1',
         Sub = 'Numinous Shield',
-        Head = 'Warlock\'s Chapeau',
+        Head = 'Errant Hat',
         Neck = 'Enfeebling Torque',
-        Ear1 = 'Cmn. Earring',
-        Ear2 = 'Coral Earring',
+        Ear1 = 'Loquac. Earring',
+        Ear2 = 'Cmn. Earring',
         Body = 'Warlock\'s Tabard',
-        Hands = 'Warlock\'s Gloves',
+        Hands = 'Dls. Gloves +1',
         Ring1 = 'Tamas Ring',
         Ring2 = 'Sapphire Ring',
         Back = 'Prism Cape',
@@ -87,13 +89,14 @@ profile.Sets = {
 
     FastCast = {
         Head = 'Warlock\'s Chapeau',
-        Body = 'Duelist\'s Tabard',
-        Waist = 'Swift Belt'
+        Ear1 = 'Loquac. Earring',
+        Body = 'Duelist\'s Tabard'
     },
 
     HasteCast = {
-        Hands = 'Dusk Gloves',
-        Feet = 'Dusk Ledelsens'
+        Hands = 'Dusk Gloves', -- +3% haste
+        Feet = 'Dusk Ledelsens', -- +2% haste
+        Waist = 'Swift Belt' -- +4% haste
     },
 
     Sneaking = {
@@ -103,10 +106,10 @@ profile.Sets = {
     },
 
     Enhancing = {
-        Neck = 'Enhancing Torque',
+        Neck = 'Enhancing Torque', -- +7 enh skill
         --Body = '',
-        Hands = 'Duelist\'s Gloves',
-        Legs = 'Warlock\'s Tights'
+        Hands = 'Dls. Gloves +1', -- +15 enh skill
+        Legs = 'Warlock\'s Tights' -- +15 enh skill
     },
 
     Enmity = {
@@ -116,7 +119,7 @@ profile.Sets = {
         Head = 'Raven Beret', -- -8 enmity
         Neck = 'Justice Badge',
         Ear1 = 'Cmn. Earring',
-        Ear2 = 'Coral Earring', 
+        Ear2 = 'Magnetic Earring', 
         Body = 'Raven Jupon', -- -9 enmity vs -4 mahatma bod
         Hands = 'Crow Bracers', -- -4 enmity vs -2 errant hands
         Ring1 = 'Tamas Ring', -- -5 enmity
@@ -128,18 +131,20 @@ profile.Sets = {
     },
 
     PlusMP = {
-        Main = 'Fencing Degen', -- +10 mp
-        Sub = 'Numinous Shield', -- +10 mp
-        Ammo = 'Hedgehog Bomb', -- +30 mp
-        Head = 'Warlock\'s Chapeau', -- 20 mp
-        --Neck = '',
-        Body = 'Warlock\'s Tabard', -- +14 mp
-        Hands = 'Errant Cuffs', -- -20 hp +20 mp
+        Main = 'Fencing Degen', -- +10mp    983mp with this set on to 867 in refresh idle, 732 after standing up from resting
+        Sub = 'Numinous Shield', -- +10mp
+        Ammo = 'Hedgehog Bomb', -- +30mp
+        Head = 'Faerie Hairpin', -- +55mp -20hp
+        Neck = 'Uggalepih Pendant', -- +20mp
+        Ear1 = 'Loquac. Earring', -- +30mp
+        Ear2 = 'Magnetic Earring', -- +20mp
+        Body = 'Duelist\'s Tabard', -- +24mp
+        Hands = 'Dls. Gloves +1', -- +23mp
         Ring1 = 'Tamas Ring', -- 30mp
         Ring2 = 'Peace Ring', -- 10 hp>mp
         Back = 'Errant Cape', -- 30mp
-        Waist = 'Hierarch Belt', -- +48 mp
-        Legs = 'Custom Slacks', -- +32 mp
+        Waist = 'Hierarch Belt', -- +48mp
+        Legs = 'Custom Slacks', -- +32mp
         Feet = 'Mahatma Pigaches' -- -25hp +25mp
     },
 
@@ -212,7 +217,7 @@ profile.Spells = {
     
     Buffs = {"Protect", "Protect II", "Protect III", "Protect IV", "Protectra", "Protectra II", "Protectra III",
      "Protectra IV", "Protectra V", "Shell", "Shell II", "Shell III", "Shell IV", "Shellra", "Shellra II",
-     "Shellra III", "Shellra IV", "Shellra V", "Haste", "Refresh", "Aquaveil", "Blink"},
+     "Shellra III", "Shellra IV", "Shellra V", "Haste", "Refresh", "Aquaveil", "Blink", "Stoneskin"},
 
     Sneaking = {"Sneak", "Invisible"}
 }
@@ -225,6 +230,7 @@ local Settings = {
     isWarp = false,
     isMDT = false,
     isPDT = false,
+    isMP = false,
     Subslot = 'Default',
     RestTimer = 0
 }
@@ -239,14 +245,6 @@ local EleStaffTable = {
     ['Light'] = 'Light Staff',
     ['Dark'] = 'Pluto\'s Staff'
 };
-
-gRealTimePtr = ashita.memory.find('FFXiMain.dll', 0, '8B0D????????8B410C8B49108D04808D04808D04808D04C1C3', 2, 0);
-
-profile.GetTimeComparand = function()
-    local ptr = ashita.memory.read_uint32(gRealTimePtr);
-    ptr = ashita.memory.read_uint32(ptr);
-    return ashita.memory.read_uint32(ptr + 0x0C);
-end
 
 profile.OnLoad = function()
     gSettings.AllowAddSet = true;
@@ -303,56 +301,25 @@ profile.EquipEleStaff = function(element, spellName)
     end
 end
 
-profile.GetItemCount = function(warpId)
-    local inv = AshitaCore:GetMemoryManager():GetInventory();
-    local ret = 0;
-    local containerNum = 0;
-    local containerIndex = 0;
-    local chosenWarp = nil;
-
-    -- x 0-12 loop can be cut down if indices of inv and wardrobe 1 + 2 allow 
-    for x = 0, 12 do
-        for y = 0, 81 do
-            local item = inv:GetContainerItem(x, y);
-            if (item ~= nil and item.Id == warpId and item.Id ~= 65535) then
-                local useTime = struct.unpack('L', item.Extra, 5); -- + 0x3C307D70;
-                local timeComp = profile.GetTimeComparand();
-                --gFunc.Echo(135, 'Warp Cudgel Charges: ' .. item.Type);
-                gFunc.Echo(135, 'Test: ' .. 0x3C307D70);
-                gFunc.Echo(135, 'Use time: ' .. useTime);
-                gFunc.Echo(135, 'Time Comperand: ' .. timeComp);
-                gFunc.Echo(135, 'Time until use: ' .. (timeComp - useTime));
-                --gFunc.Echo(135, 'Extra [1]: ' .. item.Extra[1]);
-                
-                ret = item.Count + ret;
-            end
-        end
-    end
-    return ret;
-end
-
-profile.WarpCudgel = function(args)
-    if (args[1] == 'warp') then
-		gFunc.Echo(135, "Equipping Warp Cudgel and Warping in 30s");
-        local warpInfo = AshitaCore:GetResourceManager():GetItemByName('Warp Cudgel', 2);
-        local warpCount = profile.GetItemCount(warpInfo.Id);
-        gFunc.Echo(135, "Warp Cudgel ID: " .. warpInfo.Id);
-        gFunc.Echo(135, "# of Warp Cudgels: " .. warpCount);
-        -- warp cudgel ID: 17040
-    end
-end
-
 profile.EquipSprint = function()
     if (Settings.isFast) then
         gFunc.EquipSet(profile.Sets.Sprint);
     end
 end
 
-profile.CheckLevelSync = function(synclvl)
+profile.EquipLevelSync = function(synclvl)
     if (synclvl == 50) then
         gFunc.EquipSet(profile.Sets.FiftyCap);
     elseif (synclvl == 60) then
         gFunc.EquipSet(profile.Sets.SixtyCap);
+    end
+end
+
+profile.EquipMP = function(player)
+    if ((Settings.isMP) and (player.MP < 836)) then
+        gFunc.EquipSet(profile.Sets.Idle);
+    elseif (Settings.isMP) then
+        gFunc.EquipSet(profile.Sets.PlusMP);
     end
 end
 
@@ -365,8 +332,6 @@ profile.CheckCity = function(loc)
         --gFunc.Equip('Body', '')
     end
 end
-
-
 
 profile.HandleCommand = function(args)
     profile.WarpCudgel(args);
@@ -394,6 +359,15 @@ profile.HandleCommand = function(args)
             Settings.isPDT = true;
         end
     end
+    if (args[1] == 'plusmp') then
+        if (Settings.isMP == true) then
+            Settings.isMP = false;
+            gFunc.Echo(135, 'Plus MP set off');
+        else
+            Settings.isMP = true;
+            gFunc.Echo(135, 'plus MP set on');
+        end
+    end
 end
 
 profile.HandleDefault = function()
@@ -417,7 +391,8 @@ profile.HandleDefault = function()
         gFunc.EquipSet(profile.Sets.Idle); 
         Settings.RestTimer = 0;
     end
-    profile.CheckLevelSync(player.MainJobSync);
+    profile.EquipLevelSync(player.MainJobSync);
+    profile.EquipMP(player);
     profile.EquipSprint(); 
     profile.CheckCity(loc);
 end
@@ -425,22 +400,14 @@ end
 profile.HandleAbility = function()
     local action = gData.GetAction();
     local distance = tonumber(('%.1f'):fmt(math.sqrt(gData.GetActionTarget().Distance)));
-    --local ability = AshitaCore:GetResourceManager():GetAbilityById(action.Id);
     local ability = AshitaCore:GetResourceManager():GetAbilityByName(action.Name, 2);
     local abilityCooldown = profile.GetRecastTimer(ability.RecastTimerId)/60;
-    local abilityCooldown5 = AshitaCore:GetMemoryManager():GetRecast():GetAbilityTimer(action.Id);
-    local abilityCooldown2 = AshitaCore:GetMemoryManager():GetPlayer():GetAbilityRecast(ability.Id);
-    local abilityCooldown3 = AshitaCore:GetMemoryManager():GetRecast():GetAbilityTimer(ability.Id)/60;
-    local abilityCooldown4 = AshitaCore:GetMemoryManager():GetRecast():GetAbilityTimer(action.Resource.Id);
-    -- TEST CODE FOR CONQUEST ITEMS
-    local playerNation = AshitaCore:GetMemoryManager():GetPlayer():GetNation();
     
-    gFunc.Echo(135, "Ability Cooldown Five: " .. abilityCooldown);
-    gFunc.Echo(135, "Ability Name: " .. ability.Name[3]);
-    gFunc.Echo(135, "Ability Range: " .. ability.Range);
-
     if((abilityCooldown < 0.6) and (distance <= ability.Range)) then
-        gFunc.Echo(135, "Check Successful");
+        if (ability.Name[3] == "Convert") then
+            Settings.isMP = true;
+            gFunc.EquipSet(profile.Sets.PlusMP);
+        end
     end
 end
 
@@ -448,32 +415,34 @@ profile.HandleItem = function()
 end
 
 profile.HandlePrecast = function()
+    local player = gData.GetPlayer();
     local action = gData.GetAction();
     local distance = tonumber(('%.1f'):fmt(math.sqrt(gData.GetActionTarget().Distance)));
     local spellCooldown = AshitaCore:GetMemoryManager():GetRecast():GetSpellTimer(action.Id)/60;
 
-    -- TODO gate for mp amount before equipping fast cast set so plusMP set can maintain extra mp after convert
-
-    if((spellCooldown < 0.6) and (distance <= 20.4)) then
+    if ((spellCooldown < 0.6) and (distance <= 20.4) and not (Settings.isMP)) then
         -- Precast equips FastCast set and switches into appropriate set during HandleMidcast method
+        gFunc.EquipSet(profile.Sets.FastCast);
+    elseif ((Settings.isMP) and (player.MP < 836)) then
         gFunc.EquipSet(profile.Sets.FastCast);
     end
 end
 
 profile.HandleMidcast = function()
+    local player = gData.GetPlayer();
     local action = gData.GetAction();
     local distance = tonumber(('%.1f'):fmt(math.sqrt(gData.GetActionTarget().Distance)));
     local spell = AshitaCore:GetResourceManager():GetSpellById(action.Id);
-    local spellRange = spell.Range;
-    local spellCastTime = spell.CastTime;
-    local spellRange2 = AshitaCore:GetResourceManager():GetSpellRange(action.Id, false);
     local spellCooldown = AshitaCore:GetMemoryManager():GetRecast():GetSpellTimer(action.Id)/60;
 
-    if ((spellCooldown < 0.6) and (distance <= 20.4)) then
-         -- TODO same mp gate function as in HandlePrecast method before moving on
+    if ((spellCooldown < 0.6) and (distance <= 20.4) and ((not Settings.isMP) or (Settings.isMP and (player.MP < 836))) ) then
+
+        -- Buffs 
+        if (profile.CheckForSpell(profile.Spells.Buffs, action.Name) and not (string.match(action.Name, "Stoneskin"))) then
+            gFunc.EquipSet(profile.Sets.HasteCast);
 
         -- Mind Enfeebling
-        if (profile.CheckForSpell(profile.Spells.MndEnfeebling, action.Name)) then
+        elseif (profile.CheckForSpell(profile.Spells.MndEnfeebling, action.Name)) then
             gFunc.EquipSet(profile.Sets.MndEnfeebling);
 
         -- Int Enfeebling
@@ -485,19 +454,23 @@ profile.HandleMidcast = function()
             gFunc.EquipSet(profile.Sets.Sneaking);
 
         -- Enmity-
-        --elseif (profile.CheckForSpell(profile.Spells.Healing, action.Name)) then
         elseif profile.Spells.Healing:contains(action.Name) then
+
             gFunc.EquipSet(profile.Sets.Enmity);
 
-        -- Nuking
-        elseif ((action.Skill == 'Elemental Magic') ~= (profile.CheckForSpell(profile.Spells.EleDebuffs, action.Name))) then
-            gFunc.EquipSet(profile.Sets.Nuking);
-
+        -- TODO finish check for stoneskin to add relevant haste pieces while still keeping max shield    
         -- Enhancing
         elseif ((string.match(action.Name, "Bar")) or profile.CheckForSpell(profile.Spells.Enhancing, action.Name)) then
             gFunc.EquipSet(profile.Sets.MndEnfeebling);
             gFunc.EquipSet(profile.Sets.Enhancing);
-    
+
+        -- Nuking
+        elseif ((action.Skill == 'Elemental Magic') ~= (profile.CheckForSpell(profile.Spells.EleDebuffs, action.Name))) then
+            gFunc.EquipSet(profile.Sets.Nuking);
+            if (action.MppAftercast < 51) then
+                gFunc.Equip('Neck', 'Uggalepih pendant');
+            end
+
         -- Defaults to idle set if the check falls through somehow
         else 
             gFunc.EquipSet(profile.Sets.Idle);
