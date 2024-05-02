@@ -5,11 +5,11 @@ profile.Sets = {
         Main = 'Terra\'s Staff',
         Sub = '',
         Ammo = 'Hedgehog Bomb',
-        Head = '',
+        Head = 'Dls. Chapeau +1',
         Neck = 'Uggalepih pendant',
         Ear1 = 'Loquac. Earring',
         Ear2 = 'Magnetic Earring',
-        Body = 'Vermillion Cloak',
+        Body = 'Dalmatica',
         Hands = 'Dls. Gloves +1',
         Ring1 = 'Tamas Ring',
         Ring2 = 'Merman\'s Ring',
@@ -21,7 +21,7 @@ profile.Sets = {
 
     Resting = {
         Main = 'Pluto\'s Staff',
-        Head = 'Warlock\'s Chapeau',
+        Head = 'Dls. Chapeau +1',
         Neck = 'Uggalepih Pendant',
         Ear1 = 'Loquac. Earring',
         Ear2 = 'Magnetic Earring',
@@ -38,14 +38,14 @@ profile.Sets = {
     MndEnfeebling = {
         Main = 'Mythic Wand +1',
         Sub = 'Numinous Shield',
-        Head = 'Errant Hat',
+        Head = 'Dls. Chapeau +1',
         Neck = 'Enfeebling Torque',
         Ear1 = 'Loquac. Earring',
         Ear2 = 'Cmn. Earring',
         Body = 'Warlock\'s Tabard',
-        Hands = 'Dls. Gloves +1',
+        Hands = 'Dvt. Mitts +1',
         Ring1 = 'Tamas Ring',
-        Ring2 = 'Sapphire Ring',
+        Ring2 = 'Aqua Ring',
         Back = 'Prism Cape',
         Waist = 'Penitent\'s Rope',
         Legs = 'Mahatma Slops',
@@ -56,18 +56,18 @@ profile.Sets = {
         Main = 'Mythic Wand +1',
         Sub = 'Numinous Shield',
         Ammo = 'Phtm. Tathlum',
-        Head = 'Warlock\'s Chapeau',
+        Head = 'Dls. Chapeau +1',
         Neck = 'Enfeebling Torque', -- Philomath Stole has 3 int vs 7 enf skill 
         Ear1 = 'Cunning Earring',
         Ear2 = 'Abyssal Earring',
         Body = 'Warlock\'s Tabard',
         Hands = 'Errant Cuffs',
         Ring1 = 'Tamas Ring',
-        Ring2 = 'Diamond Ring',
+        Ring2 = 'Snow Ring',
         Back = 'Prism Cape',
         Waist = 'Penitent\'s Rope',
         Legs = 'Mahatma Slops',
-        Feet = 'Warlock\'s Boots'
+        Feet = 'Wise Pigaches'
     },
 
     Nuking = {
@@ -78,11 +78,11 @@ profile.Sets = {
         Ear1 = 'Moldavite Earring',
         Ear2 = 'Abyssal Earring',
         Body = 'Mahatma Hpl.',
-        Hands = 'Warlock\'s Gloves',
+        Hands = 'Dls. Gloves +1',
         Ring1 = 'Tamas Ring',
-        Ring2 = 'Diamond Ring',
+        Ring2 = 'Snow Ring',
         Back = 'Prism Cape',
-        Waist = 'Swift Belt',
+        Waist = 'Penitent\'s Rope',
         Legs = 'Mahatma Slops',
         Feet = 'Dls. Boots +1'
     },
@@ -94,9 +94,14 @@ profile.Sets = {
     },
 
     HasteCast = {
-        Hands = 'Dusk Gloves', -- +3% haste
-        Feet = 'Dusk Ledelsens', -- +2% haste
-        Waist = 'Swift Belt' -- +4% haste
+        Hands = 'Dusk Gloves',
+        Waist = 'Swift Belt',
+        Legs = 'Nashira Seraweels',
+        Feet = 'Dusk Ledelsens'
+    },
+    
+    DarkCast = {
+        Ear1 = 'Abyssal Earring',
     },
 
     Sneaking = {
@@ -106,22 +111,22 @@ profile.Sets = {
     },
 
     Enhancing = {
-        Neck = 'Enhancing Torque', -- +7 enh skill
+        Neck = 'Enhancing Torque', -- +7 enh 
         --Body = '',
-        Hands = 'Dls. Gloves +1', -- +15 enh skill
-        Legs = 'Warlock\'s Tights' -- +15 enh skill
+        Hands = 'Dls. Gloves +1', -- +15 enh
+        Legs = 'Warlock\'s Tights' -- +15 enh
     },
 
-    Enmity = {
+    Enmity = { -- -49 enmity with this set (-50 is cap)
         Main = 'Mythic Wand +1',
         Sub = 'Numinous Shield',
         Ammo = 'Hedgehog Bomb', -- -1 enmity
         Head = 'Raven Beret', -- -8 enmity
         Neck = 'Justice Badge',
-        Ear1 = 'Cmn. Earring',
+        Ear1 = 'Novia Earring', -- -7 enmity
         Ear2 = 'Magnetic Earring', 
-        Body = 'Raven Jupon', -- -9 enmity vs -4 mahatma bod
-        Hands = 'Crow Bracers', -- -4 enmity vs -2 errant hands
+        Body = 'Mahatma Hpl.', -- -4 enmity
+        Hands = 'Raven Bracers', -- -5 enmity vs -2 errant hands
         Ring1 = 'Tamas Ring', -- -5 enmity
         Ring2 = 'Peace Ring', -- -1 enmity
         Back = 'Errant Cape', -- -5 enmity
@@ -130,8 +135,8 @@ profile.Sets = {
         Feet = 'Crow Gaiters' -- -4 enmity vs -2 errant feet
     },
 
-    PlusMP = {
-        Main = 'Fencing Degen', -- +10mp    983mp with this set on to 867 in refresh idle, 732 after standing up from resting
+    PlusMP = { -- 983mp with this set on to 867 in refresh idle, 732 after standing up from resting
+        Main = 'Fencing Degen', -- +10mp    
         Sub = 'Numinous Shield', -- +10mp
         Ammo = 'Hedgehog Bomb', -- +30mp
         Head = 'Faerie Hairpin', -- +55mp -20hp
@@ -144,7 +149,7 @@ profile.Sets = {
         Ring2 = 'Peace Ring', -- 10 hp>mp
         Back = 'Errant Cape', -- 30mp
         Waist = 'Hierarch Belt', -- +48mp
-        Legs = 'Custom Slacks', -- +32mp
+        Legs = 'Blood Cuisses', -- +27mp +27hp
         Feet = 'Mahatma Pigaches' -- -25hp +25mp
     },
 
@@ -241,7 +246,7 @@ local EleStaffTable = {
     ['Water'] = 'Water Staff',
     ['Wind'] = 'Auster\'s Staff',
     ['Ice'] = 'Aquilo\'s Staff',
-    ['Thunder'] = 'Thunder Staff',
+    ['Thunder'] = 'Jupiter\'s Staff',
     ['Light'] = 'Light Staff',
     ['Dark'] = 'Pluto\'s Staff'
 };
@@ -251,6 +256,7 @@ profile.OnLoad = function()
     AshitaCore:GetChatManager():QueueCommand(-1, '/alias /rdm /lac fwd');
     AshitaCore:GetChatManager():QueueCommand(-1, '/bind F9 /lac fwd fast');
     AshitaCore:GetChatManager():QueueCommand(-1, '/bind F10 /lac fwd warp');
+    AshitaCore:GetChatManager():QueueCommand(-1, '/bind 3 /lac fwd plusmp');
     AshitaCore:GetChatManager():QueueCommand(-1, '/bind M /map');
 end
 
@@ -258,6 +264,7 @@ profile.OnUnload = function()
     AshitaCore:GetChatManager():QueueCommand(-1, '/alias delete /rdm');
     AshitaCore:GetChatManager():QueueCommand(-1, '/unbind F9');
     AshitaCore:GetChatManager():QueueCommand(-1, '/unbind F10');
+    AshitaCore:GetChatManager():QueueCommand(-1, '/unbind 3');
     AshitaCore:GetChatManager():QueueCommand(-1, '/unbind M /map');
 end
 
@@ -392,7 +399,9 @@ profile.HandleDefault = function()
         Settings.RestTimer = 0;
     end
     profile.EquipLevelSync(player.MainJobSync);
-    profile.EquipMP(player);
+    if (player.Status ~= 'Resting') then 
+        profile.EquipMP(player);
+    end
     profile.EquipSprint(); 
     profile.CheckCity(loc);
 end
@@ -423,7 +432,7 @@ profile.HandlePrecast = function()
     if ((spellCooldown < 0.6) and (distance <= 20.4) and not (Settings.isMP)) then
         -- Precast equips FastCast set and switches into appropriate set during HandleMidcast method
         gFunc.EquipSet(profile.Sets.FastCast);
-    elseif ((Settings.isMP) and (player.MP < 836)) then
+    elseif ((Settings.isMP) and (player.MP < 868)) then
         gFunc.EquipSet(profile.Sets.FastCast);
     end
 end
@@ -435,7 +444,7 @@ profile.HandleMidcast = function()
     local spell = AshitaCore:GetResourceManager():GetSpellById(action.Id);
     local spellCooldown = AshitaCore:GetMemoryManager():GetRecast():GetSpellTimer(action.Id)/60;
 
-    if ((spellCooldown < 0.6) and (distance <= 20.4) and ((not Settings.isMP) or (Settings.isMP and (player.MP < 836))) ) then
+    if ((spellCooldown < 0.6) and (distance <= 20.4) and ((not Settings.isMP) or (Settings.isMP and (player.MP < 868))) ) then
 
         -- Buffs 
         if (profile.CheckForSpell(profile.Spells.Buffs, action.Name) and not (string.match(action.Name, "Stoneskin"))) then
@@ -455,10 +464,8 @@ profile.HandleMidcast = function()
 
         -- Enmity-
         elseif profile.Spells.Healing:contains(action.Name) then
-
             gFunc.EquipSet(profile.Sets.Enmity);
-
-        -- TODO finish check for stoneskin to add relevant haste pieces while still keeping max shield    
+ 
         -- Enhancing
         elseif ((string.match(action.Name, "Bar")) or profile.CheckForSpell(profile.Spells.Enhancing, action.Name)) then
             gFunc.EquipSet(profile.Sets.MndEnfeebling);
