@@ -20,19 +20,19 @@ profile.Sets = {
     },
 
     Resting = {
-        Main = 'Pluto\'s Staff',
-        Head = 'Dls. Chapeau +1',
+        Main = 'Pluto\'s Staff', -- 10hmp
+        Head = 'Dls. Chapeau +1', -- refresh
         Neck = 'Uggalepih Pendant',
         Ear1 = 'Loquac. Earring',
-        Ear2 = 'Magnetic Earring',
-        Body = 'Mahatma Hpl.',
-        Hands = 'Warlock\'s Gloves',
+        Ear2 = 'Magnetic Earring', -- 1hmp
+        Body = 'Mahatma Hpl.', -- 6hmp
+        Hands = 'Hydra Gloves', -- 1hmp
         Ring1 = 'Tamas Ring',
         Ring2 = 'Merman\'s Ring',
         Back = 'Hexerei Cape',
-        Waist = 'Duelist\'s Belt',
-        Legs = 'Baron\'s Slops',
-        Feet = 'Warlock\'s Boots'
+        Waist = 'Duelist\'s Belt', -- 4hmp
+        Legs = 'Baron\'s Slops', -- 1hmp
+        Feet = 'Hydra Gaiters' -- 2hmp
     },
 
     MndEnfeebling = {
@@ -58,7 +58,7 @@ profile.Sets = {
         Ammo = 'Phtm. Tathlum',
         Head = 'Dls. Chapeau +1',
         Neck = 'Enfeebling Torque', -- Philomath Stole has 3 int vs 7 enf skill 
-        Ear1 = 'Cunning Earring',
+        Ear1 = 'Morion Earring +1',
         Ear2 = 'Abyssal Earring',
         Body = 'Warlock\'s Tabard',
         Hands = 'Errant Cuffs',
@@ -85,6 +85,23 @@ profile.Sets = {
         Waist = 'Penitent\'s Rope',
         Legs = 'Mahatma Slops',
         Feet = 'Dls. Boots +1'
+    },
+
+    NukingInt = {
+        Main = 'Mythic Wand +1',
+        Ammo = 'Phtm. Tathlum',
+        Head = 'Warlock\'s Chapeau', -- Need warlock chap+1 for +int
+        Neck = 'Elemental Torque',
+        Ear1 = 'Moldavite Earring',
+        Ear2 = 'Abyssal Earring',
+        Body = 'Mahatma Hpl.',
+        Hands = 'Dls. Gloves +1',
+        Ring1 = 'Tamas Ring',
+        Ring2 = 'Snow Ring',
+        Back = 'Prism Cape',
+        Waist = 'Penitent\'s Rope',
+        Legs = 'Mahatma Slops',
+        Feet = 'Wise pigaches' -- 4int vs 5mab from duelist boots+1
     },
 
     FastCast = {
@@ -117,22 +134,22 @@ profile.Sets = {
         Legs = 'Warlock\'s Tights' -- +15 enh
     },
 
-    Enmity = { -- -49 enmity with this set (-50 is cap)
+    Enmity = { -- -50 enmity with this set (-50 is cap)
         Main = 'Mythic Wand +1',
         Sub = 'Numinous Shield',
         Ammo = 'Hedgehog Bomb', -- -1 enmity
         Head = 'Raven Beret', -- -8 enmity
-        Neck = 'Justice Badge',
+        Neck = 'Promise Badge',
         Ear1 = 'Novia Earring', -- -7 enmity
         Ear2 = 'Magnetic Earring', 
         Body = 'Mahatma Hpl.', -- -4 enmity
-        Hands = 'Raven Bracers', -- -5 enmity vs -2 errant hands
+        Hands = 'Hydra Gloves', -- -5 enmity 
         Ring1 = 'Tamas Ring', -- -5 enmity
         Ring2 = 'Peace Ring', -- -1 enmity
         Back = 'Errant Cape', -- -5 enmity
         Waist = 'Penitent\'s Rope', -- -3 enmity
         Legs = 'Raven Hose', -- -6 enmity 
-        Feet = 'Crow Gaiters' -- -4 enmity vs -2 errant feet
+        Feet = 'Hydra Gaiters' -- -5 enmity
     },
 
     PlusMP = { -- 983mp with this set on to 867 in refresh idle, 732 after standing up from resting
@@ -143,7 +160,7 @@ profile.Sets = {
         Neck = 'Uggalepih Pendant', -- +20mp
         Ear1 = 'Loquac. Earring', -- +30mp
         Ear2 = 'Magnetic Earring', -- +20mp
-        Body = 'Duelist\'s Tabard', -- +24mp
+        Body = 'Dalmatica', -- 50 hp>mp
         Hands = 'Dls. Gloves +1', -- +23mp
         Ring1 = 'Tamas Ring', -- 30mp
         Ring2 = 'Peace Ring', -- 10 hp>mp
