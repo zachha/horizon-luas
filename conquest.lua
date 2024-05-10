@@ -1,4 +1,4 @@
--- conquest needs to be included in the luashitacast.lua file. The  line can be added under the other includes: conquest = require('conquest')
+-- conquest needs to be included in the luashitacast.lua file. This line can be added under the other includes: conquest = require('conquest')
 -- conquest.setControl() is fired when the incoming packet event listener in luashitacast.lua detects the conquest packet with id: 0x05E
 -- on lac updates that main file may be overwritten so make a copy or remember to add the code back in if it is rewritten 
 

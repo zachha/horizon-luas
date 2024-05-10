@@ -152,12 +152,12 @@ profile.Sets = {
         Feet = 'Hydra Gaiters' -- -5 enmity
     },
 
-    PlusMP = { -- 983mp with this set on to 867 in refresh idle, 732 after standing up from resting
+    PlusMP = { -- 1010mp (1030mp w/ rgm) with this set on to 917 (947 w/ rgm) in refresh idle, 744 (774 w/ rgm) after standing up from resting
         Main = 'Fencing Degen', -- +10mp    
         Sub = 'Numinous Shield', -- +10mp
         Ammo = 'Hedgehog Bomb', -- +30mp
         Head = 'Faerie Hairpin', -- +55mp -20hp
-        Neck = 'Uggalepih Pendant', -- +20mp
+        Neck = 'Uggalepih Pendant', -- +20mp (Repulican Gold Medal: +50mp gets equipped if nation does not control zone)
         Ear1 = 'Loquac. Earring', -- +30mp
         Ear2 = 'Magnetic Earring', -- +20mp
         Body = 'Dalmatica', -- 50 hp>mp
@@ -171,8 +171,8 @@ profile.Sets = {
     },
 
     MDT = {
-        Ear1 = 'Coral Earring',
-        Ear2 = 'Coral Earring',
+        Ear1 = 'Merman\'s Earring',
+        Ear1 = 'Merman\'s Earring',
         Back = 'Hexerei Cape',
         Hands = 'Duelist\'s Gloves',
         --Ring1 = '',
@@ -258,9 +258,9 @@ local Settings = {
 }
 
 local EleStaffTable = {
-    ['Fire'] = 'Fire Staff',
+    ['Fire'] = 'Vulcan\'s Staff',
     ['Earth'] = 'Terra\'s Staff',
-    ['Water'] = 'Water Staff',
+    ['Water'] = 'Neptune\'s Staff',
     ['Wind'] = 'Auster\'s Staff',
     ['Ice'] = 'Aquilo\'s Staff',
     ['Thunder'] = 'Jupiter\'s Staff',
@@ -314,7 +314,7 @@ profile.CheckForSpell = function(spellList, castSpell)
     end
 end
 
--- Method that checks passed element string and equips appropriate elemental staff
+-- Method that checks the passed element string and equips appropriate elemental staff
 profile.EquipEleStaff = function(element, spellName)
     if (profile.CheckForSpell(profile.Spells.Buffs, spellName)) then
         gFunc.Equip('Main', EleStaffTable["Earth"]);
@@ -325,12 +325,14 @@ profile.EquipEleStaff = function(element, spellName)
     end
 end
 
+-- Method that checks isFast toggle and equips Powder Boots or keeps them equipped
 profile.EquipSprint = function()
     if (Settings.isFast) then
         gFunc.EquipSet(profile.Sets.Sprint);
     end
 end
 
+-- Method that checks sync level and equips the appropriate gear set
 profile.EquipLevelSync = function(synclvl)
     if (synclvl == 50) then
         gFunc.EquipSet(profile.Sets.FiftyCap);
@@ -339,24 +341,29 @@ profile.EquipLevelSync = function(synclvl)
     end
 end
 
+-- Method that checks isMP toggle and keeps the PlusMP set equipped while user still has the extra mp from the set 
 profile.EquipMP = function(player)
-    if ((Settings.isMP) and (player.MP < 836)) then
+    if ((Settings.isMP) and (player.MP < 917)) then
         gFunc.EquipSet(profile.Sets.Idle);
     elseif (Settings.isMP) then
         gFunc.EquipSet(profile.Sets.PlusMP);
     end
 end
 
+-- Method that automatically equips player's Nation Aketon if they're in the city (future-proofed for getting the tri-aketon that works everywhere)
 profile.CheckCity = function(loc)
-    if (string.match(loc, "Bastok")) or (string.match(loc, "Metalworks")) then
+    if not string.match(loc, "Dynamis") and ((string.match(loc, "Bastok")) or (string.match(loc, "Metalworks"))) then
         gFunc.Equip('Body', "Republic Aketon");
-    elseif (string.match(loc, "Windurst")) or (string.match(loc, "Heavens Tower")) then
+    elseif not string.match(loc, "Dynamis") and ((string.match(loc, "Windurst")) or (string.match(loc, "Heavens Tower"))) then
         --gFunc.Equip('Body', '')
-    elseif (string.match(loc, "San d\'Oria")) or (string.match(loc, "d\'Oraguille")) then
+    elseif not string.match(loc, "Dynamis") and ((string.match(loc, "San d\'Oria")) or (string.match(loc, "d\'Oraguille"))) then
+        --gFunc.Equip('Body', '')
+    elseif not string.match(loc, "Dynamis") and ((string.match(loc, "Jeuno")) or (string.match(loc, "Ru\'Lude"))) then
         --gFunc.Equip('Body', '')
     end
 end
 
+-- Keeps track of toggle variables
 profile.HandleCommand = function(args)
     profile.WarpCudgel(args);
     if (args[1] == 'fast') then
@@ -421,6 +428,10 @@ profile.HandleDefault = function()
     end
     profile.EquipSprint(); 
     profile.CheckCity(loc);
+    -- requires conquest.lua and for the module to be imported and integrated into luashitacast.lua
+    if ((conquest.settings.regionControl == false) and (gData.GetBuffCount("Signet") > 0)) then
+        gFunc.Equip('Neck', "Rep.Gold Medal");
+    end
 end
 
 profile.HandleAbility = function()
@@ -443,13 +454,13 @@ end
 profile.HandlePrecast = function()
     local player = gData.GetPlayer();
     local action = gData.GetAction();
-    local distance = tonumber(('%.1f'):fmt(math.sqrt(gData.GetActionTarget().Distance)));
+    local distance = tonumber(('%.1f'):fmt(gData.GetActionTarget().Distance));
     local spellCooldown = AshitaCore:GetMemoryManager():GetRecast():GetSpellTimer(action.Id)/60;
 
     if ((spellCooldown < 0.6) and (distance <= 20.4) and not (Settings.isMP)) then
         -- Precast equips FastCast set and switches into appropriate set during HandleMidcast method
         gFunc.EquipSet(profile.Sets.FastCast);
-    elseif ((Settings.isMP) and (player.MP < 868)) then
+    elseif ((Settings.isMP) and (player.MP < 917)) then
         gFunc.EquipSet(profile.Sets.FastCast);
     end
 end
@@ -457,11 +468,12 @@ end
 profile.HandleMidcast = function()
     local player = gData.GetPlayer();
     local action = gData.GetAction();
-    local distance = tonumber(('%.1f'):fmt(math.sqrt(gData.GetActionTarget().Distance)));
+    local distance = tonumber(('%.1f'):fmt(gData.GetActionTarget().Distance));
     local spell = AshitaCore:GetResourceManager():GetSpellById(action.Id);
     local spellCooldown = AshitaCore:GetMemoryManager():GetRecast():GetSpellTimer(action.Id)/60;
 
-    if ((spellCooldown < 0.6) and (distance <= 20.4) and ((not Settings.isMP) or (Settings.isMP and (player.MP < 868))) ) then
+    -- Gate checks if the spell is on cooldown, if the target is in range, and if isMP is toggled before swapping gearsets
+    if ((spellCooldown < 0.6) and (distance <= 20.4) and ((not Settings.isMP) or (Settings.isMP and (player.MP < 917))) ) then
 
         -- Buffs 
         if (profile.CheckForSpell(profile.Spells.Buffs, action.Name) and not (string.match(action.Name, "Stoneskin"))) then
@@ -482,11 +494,14 @@ profile.HandleMidcast = function()
         -- Enmity-
         elseif profile.Spells.Healing:contains(action.Name) then
             gFunc.EquipSet(profile.Sets.Enmity);
- 
+
         -- Enhancing
         elseif ((string.match(action.Name, "Bar")) or profile.CheckForSpell(profile.Spells.Enhancing, action.Name)) then
             gFunc.EquipSet(profile.Sets.MndEnfeebling);
             gFunc.EquipSet(profile.Sets.Enhancing);
+            if (string.match(action.Name, "Stoneskin")) then
+                gFunc.Equip('Neck', 'Stone Gorget');
+            end
 
         -- Nuking
         elseif ((action.Skill == 'Elemental Magic') ~= (profile.CheckForSpell(profile.Spells.EleDebuffs, action.Name))) then
@@ -495,7 +510,14 @@ profile.HandleMidcast = function()
                 gFunc.Equip('Neck', 'Uggalepih pendant');
             end
 
-        -- Defaults to idle set if the check falls through somehow
+        -- Dark Magic 
+        elseif (action.Skill == 'Dark Magic') then
+            gFunc.EquipSet(profile.Sets.DarkCast);
+            if (string.match(action.Name, "Aspir") or string.match(action.name, "Drain")) then
+                gFunc.Equip('Ring1', 'Overlord\'s Ring');
+            end
+
+        -- Defaults to idle set if the check falls through
         else 
             gFunc.EquipSet(profile.Sets.Idle);
         end
@@ -503,7 +525,6 @@ profile.HandleMidcast = function()
         -- Equips appropriate Elemental Staff
         profile.EquipEleStaff(action.Element, action.Name);
     end
-
 end
 
 profile.HandlePreshot = function()
