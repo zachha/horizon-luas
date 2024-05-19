@@ -87,7 +87,7 @@ profile.Sets = {
         Feet = 'Dls. Boots +1'
     },
 
-    NukingInt = {
+    NukingAcc = {
         Main = 'Mythic Wand +1',
         Ammo = 'Phtm. Tathlum',
         Head = 'Warlock\'s Chapeau', -- Need warlock chap+1 for +int
@@ -100,7 +100,7 @@ profile.Sets = {
         Ring2 = 'Snow Ring',
         Back = 'Prism Cape',
         Waist = 'Penitent\'s Rope',
-        Legs = 'Mahatma Slops',
+        Legs = 'Duelist\'s Tights', -- 10 ele skill vs 8 int from mahatma
         Feet = 'Wise pigaches' -- 4int vs 5mab from duelist boots+1
     },
 
