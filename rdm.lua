@@ -73,7 +73,7 @@ profile.Sets = {
     Nuking = {
         Main = 'Mythic Wand +1',
         Ammo = 'Phtm. Tathlum',
-        Head = 'Warlock\'s Chapeau',
+        Head = 'Wlk. Chapeau +1',
         Neck = 'Elemental Torque',
         Ear1 = 'Moldavite Earring',
         Ear2 = 'Abyssal Earring',
@@ -90,7 +90,7 @@ profile.Sets = {
     NukingAcc = {
         Main = 'Mythic Wand +1',
         Ammo = 'Phtm. Tathlum',
-        Head = 'Warlock\'s Chapeau', -- Need warlock chap+1 for +int
+        Head = 'Wlk Chapeau +1', 
         Neck = 'Elemental Torque',
         Ear1 = 'Moldavite Earring',
         Ear2 = 'Abyssal Earring',
@@ -105,7 +105,7 @@ profile.Sets = {
     },
 
     FastCast = {
-        Head = 'Warlock\'s Chapeau',
+        Head = 'Wlk. Chapeau +1',
         Ear1 = 'Loquac. Earring',
         Body = 'Duelist\'s Tabard'
     },
@@ -221,7 +221,8 @@ profile.Sets = {
         Waist = 'Swift Belt',
         Legs = 'Raven Hose',
         Feet = 'Custom M Boots',
-    }};
+    }
+};
 
 profile.Spells = {
     Healing = T{"Cure", "Cure II", "Cure III", "Cure IV", "Curaga", "Curaga II", "Erase"},
