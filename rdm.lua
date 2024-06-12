@@ -368,7 +368,7 @@ end
 profile.HandleCommand = function(args)
     profile.WarpCudgel(args);
     if (args[1] == 'fast') then
-        if (Settings.isFast == true) then
+        if (Settings.isFast) then
             Settings.isFast = false;
             gFunc.Enable('Feet');
             gFunc.Echo(135, 'Powder Boots off');
@@ -378,21 +378,21 @@ profile.HandleCommand = function(args)
         end
     end
     if (args[1] == 'mdt') then
-        if (Settings.isMDT == true) then
+        if (Settings.isMDT) then
             Settings.isMDT = false;
         else
             Settings.isMDT = true;
         end
     end
     if (args[1] == 'pdt') then
-        if (Settings.isPDT == true) then
+        if (Settings.isPDT) then
             Settings.isPDT = false;
         else
             Settings.isPDT = true;
         end
     end
     if (args[1] == 'plusmp') then
-        if (Settings.isMP == true) then
+        if (Settings.isMP) then
             Settings.isMP = false;
             gFunc.Echo(135, 'Plus MP set off');
         else
@@ -458,6 +458,7 @@ profile.HandlePrecast = function()
     local distance = tonumber(('%.1f'):fmt(gData.GetActionTarget().Distance));
     local spellCooldown = AshitaCore:GetMemoryManager():GetRecast():GetSpellTimer(action.Id)/60;
 
+    -- Gate checks if the spell is on cooldown, if the target is in range, and if isMP is toggled before swapping gearsets
     if ((spellCooldown < 0.6) and (distance <= 20.4) and not (Settings.isMP)) then
         -- Precast equips FastCast set and switches into appropriate set during HandleMidcast method
         gFunc.EquipSet(profile.Sets.FastCast);
@@ -473,7 +474,7 @@ profile.HandleMidcast = function()
     local spell = AshitaCore:GetResourceManager():GetSpellById(action.Id);
     local spellCooldown = AshitaCore:GetMemoryManager():GetRecast():GetSpellTimer(action.Id)/60;
 
-    -- Gate checks if the spell is on cooldown, if the target is in range, and if isMP is toggled before swapping gearsets
+    -- Same gate check as in HandlePrecast
     if ((spellCooldown < 0.6) and (distance <= 20.4) and ((not Settings.isMP) or (Settings.isMP and (player.MP < 917))) ) then
 
         -- Buffs 
